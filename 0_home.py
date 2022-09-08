@@ -25,12 +25,20 @@ menu = int(input('Digite a opção do Menu: '))
 
 print('')
 
-# Variaveis - (steep 1 )
+# Variaveis 
 
-# 1 - Cadastro - Julia - Bruno (2)
 
-# 2 - Vendas - Fernando - Tiago (2)
+# 1 - Menu de Cadastro - Julia - Bruno (Steep 1 )
 
-# 3 - Relatorio ( step 3 )
+#   Cadastramento de produtos
+#   *Listar produtos cadastrados*
+#   Deleção de produtos
 
-# 4 - Sair
+# 2 - Menu de Vendas - Fernando - Tiago (Steep 2)
+#   Adição de produtos ao carrinho
+#   Finalização da venda do carrinho (dizendo quanto o usuário tem que pagar)
+
+# 3 - Relatorio ( steep 4 )
+#   Extrato de produtos vendidos
+
+# 4 - Sair (Steep 3 )
