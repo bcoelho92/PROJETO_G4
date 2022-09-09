@@ -9,21 +9,65 @@
 
 # Boas vindas / 0 - Menu
 
-print ('|**************************************************|')
-print ('| Bem vindo(a) ao sistema de vendas da Organico’s! |')
-print ('|                                                  |')
-print ('| Digute o numero da opção que você deseja:        |')
-print ('|                                                  |')
-print ('| Digite 1 - Cadastro                              |')
-print ('| Digute 2 - Vendas                                |')
-print ('| Digute 3 - Relatório                             |')
-print ('| Digute 2 - Sair                                  |')
-print ('|                                                  |')
-print ('****************************************************')
+nomeCliente = str(input('Digite sue nome: '))
+print('')
+print('''
+|*****************************************************|
+| Bem vindo(a) {} ao sistema de vendas da Organico’s! |
+|                                                     |
+| Digute o numero da opção que você deseja:           |
+|                                                     |
+| Digite 1 - Cadastro                                 |
+| Digute 2 - Vendas                                   |
+| Digute 3 - Relatório                                |
+| Digute 2 - Sair                                     |
+|                                                     |
+*******************************************************
+'''.format(nomeCliente))
 
 menu = int(input('Digite a opção do Menu: '))
 
 print('')
+
+menu = int(input('Digite a opção desejada: '))
+import os
+
+while menu >=5 or menu <=0:
+    menu = int(input('Digite a opção valida: '))
+    os.system('clear')
+       
+if menu == 1:
+    n1 = float(input('digite primeiro numero: '))
+    n2 = float(input('digite segundo numero: '))
+    r = n1+n2
+    print ('A somea de {} e {} é igaul {}'.format(n1,n2,r))
+
+elif menu == 2:
+        print("vamos Subtrair")
+        n1 = float(input('digite primeiro numero: '))
+        n2 = float(input('digite segundo numero: '))
+        r = n1-n2
+        print ('A Subtração de {} e {} é igaul {}'.format(n1,n2,r))
+
+
+elif menu == 3:
+        print('Seu Dividir!')
+        n1 = float(input('digite primeiro numero: '))
+        n2 = float(input('digite segundo numero: '))
+        r = n1*n2
+        print ('A multi de {} e {} é igaul {}'.format(n1,n2,r))
+
+elif menu == 4:
+        print('Sair, grato pelo seu acesso!')
+
+#-----
+
+print('')
+print('fim do programa!')
+
+
+
+
 
 # Variaveis 
 
