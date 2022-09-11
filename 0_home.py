@@ -8,24 +8,41 @@
 ####################################################################################
 
 # Boas vindas / 0 - Menu
+print()
+nomeCliente = str(input('Digite sue nome: '))
 
-print ('|**************************************************|')
-print ('| Bem vindo(a) ao sistema de vendas da Organico’s! |')
-print ('|                                                  |')
-print ('| Digute o numero da opção que você deseja:        |')
-print ('|                                                  |')
-print ('| Digite 1 - Cadastro                              |')
-print ('| Digute 2 - Vendas                                |')
-print ('| Digute 3 - Relatório                             |')
-print ('| Digute 2 - Sair                                  |')
-print ('|                                                  |')
-print ('****************************************************')
-
-menu = int(input('Digite a opção do Menu: '))
-
-print('')
-
-# Variaveis 
+def main():
+    while True:
+        print('''
+***********************************************************
+ Bem vindo(a) {} ao sistema de vendas da Organico’s! 
+                                                     
+ Digute o numero da opção que você deseja:           
+                                                     
+ [1] - Cadastro                                 
+ [2] - Vendas                                   
+ [3] - Relatório                                
+ [4] - Sair                                     
+                                                     
+***********************************************************
+'''.format(nomeCliente))
+    
+        menu = int(input('Digite a opção: '))
+        print()
+        
+        if menu == 1:
+            print ('Cadastro')
+        elif menu == 2:
+            print ('Vendas')
+        elif menu == 3:
+            print ('Relatorio ')
+        elif menu == 4:
+            print('fim do programa')
+            break
+        else: 
+            print('Digite a opção valida: ')
+            main()
+main() 
 
 
 # 1 - Menu de Cadastro - Julia - Bruno (Steep 1 )
@@ -42,3 +59,4 @@ print('')
 #   Extrato de produtos vendidos
 
 # 4 - Sair (Steep 3 )
+
