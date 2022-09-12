@@ -22,7 +22,7 @@ MENU DE VENDAS
 1 - Adicionar produtos ao carrinho
 2 - Remover produtos do carrinho
 3 - Carrinho
-0 - Voltar ao início
+4 - Voltar ao início
 ''')
         menuVendas = input("Digite a opção desejada: ")
         
@@ -164,3 +164,6 @@ MENU DE VENDAS
             enter = input("Aperte Enter para voltar")
             menuVendas = 0
 
+
+if menuVendas == 4:
+    menuGeral = 0
