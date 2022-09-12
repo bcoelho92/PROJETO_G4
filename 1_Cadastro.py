@@ -1,36 +1,79 @@
 # 1 - Cadastro - responsaveis Julia e Bruno (2)
-# Rascunho de funções
+    #Sub-menu de Cadastro:
+    #Cadastramento de produtos
+    #Listar produtos cadastrados
+    #Deleção de produtos 
+    
+import os
 
-#criar txt de produtos cadastrados
-#como adicionar precificação?
-#menu de cadastro de itens
-    #def menu(produtos):
-    #print( 'Você tem X itens na sua lista \nDigite 1 para exibir sua lista \nDigite 2 para adicionar um item da lista \nDigite 3 para remover um item da lista.')
+def clear_console():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
-#criar lista
-produtos = []
-print(f'Lista de produtos cadastrados: {produtos}')
+clear_console() 
 
-# Usando append() pra adicionar novo item
-f = input('Inclua um novo produto:\n')
-produtos.append(f)
+print (''' 
 
-#Mostrar numero de itens na lista
-print('Total de itens cadastrados ', len(produtos))
+Bem vindo(a) ao Menu de Estoque! Digite a opção que você deseja:
 
-#imprimir lista
-print(f'Lista de produtos atualizada: {produtos}')
+1 - Cadastrar um novo produto
+2 - Listar todos os Produtos Cadastrados 
+3 - Apagar um Produto do Cadastro
+4 - Sair
+''')
+print('')
 
-#indexar cada item começando por 0 (ou usar enumerate()?)
-for index in range(len(produtos)):
-    print(index),produtos[index]
+# variaveis 
 
-#remover um item da lista pelo número indexado
-p = input('Digite o numero do produto que você quer remover:\n')
-produtos.pop()
-print(f'Lista de produtos atualizada: {produtos}')
+menu = int(input('Digite a opção desejada: '))
+
+while menu >=5 or menu <=0:
+    menu = int(input('Digite a opção válida: '))
+
+if menu == 1:
+    clear_console()
+    print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
+
+elif menu == 2:
+    clear_console()
+    print("Esses são os produtos cadastrados no estoque:")
+
+elif menu == 3:
+    clear_console()
+    print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
+
+elif menu == 4:
+    clear_console()
+    print("Saindo do Menu de Cadastro\n")
 
 
+lista = {} #criando lista vazia 
+qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
+
+for i in range(qtd):
+    produto = input("Digite o nome do produto: ")
+    valor = input("Digite o valor do produto: ")
+    lista[produto] = valor
+
+clear_console()    
+print("Produtos cadastrados:")
+for produto in lista:
+    print("-", (produto), "R$",(valor))
+
+#remover item cadastrado
+deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ")
+if deleta in lista:
+    lista.pop(deleta)
+    print ("\nVocê apagou o item: \n-", (deleta), "\n")
+    print("\nLista Atualizada:")
+    print(lista)
+
+elif deleta == "":
+    print(lista)
+
+else: print("\nProduto nao cadastrado!")
 
 
 
