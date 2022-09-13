@@ -12,7 +12,7 @@ produtos = {"arroz": 6, "feijão": 8, "macarrão": 12, "sal": 2, "açúcar": 3} 
 qtdProdutos = len(produtos)
 
 total_local = 0
-menuGeral = 2
+menuGeral = 2 #Variável de exemplo para começar meu código
 menuVendas = 0
 while menuGeral == 2:
 
@@ -128,7 +128,7 @@ while menuGeral == 2:
             menuVendas = 3
 
 
-    if int(menuVendas) == 3: #Finalizar compra
+    if int(menuVendas) == 3: #Carrinho
         clear()
 
         print("CARRINHO") #Print carrinho
@@ -176,6 +176,7 @@ while menuGeral == 2:
             enter = input("\nAperte Enter para confirmar a compra")
             clear()
             print("Compra efetuada com sucesso!")
+            vendasQtd = carrinho
             enter = input("\nAperte Enter para voltar ao menu inicial")
             carrinho = {}
             menuVendas = 0
