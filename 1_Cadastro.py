@@ -5,6 +5,7 @@
     #Deleção de produtos 
     
 import os
+#os.system('cls')
 
 def clear_console():
     if os.name == 'nt':
@@ -25,16 +26,16 @@ Bem vindo(a) ao Menu de Estoque! Digite a opção que você deseja:
 ''')
 print('')
 
-# variaveis 
 
 menu = int(input('Digite a opção desejada: '))
 
 while menu >=5 or menu <=0:
-    menu = int(input('Digite a opção válida: '))
+    menu = int(input('Digite uma opção válida: '))
 
 if menu == 1:
     clear_console()
     print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
+    
 
 elif menu == 2:
     clear_console()
@@ -53,7 +54,7 @@ lista = {} #criando lista vazia
 qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
 
 for i in range(qtd):
-    produto = input("Digite o nome do produto: ")
+    produto = input("Digite o nome do produto: ").title()
     valor = input("Digite o valor do produto: ")
     lista[produto] = valor
 
@@ -63,7 +64,7 @@ for produto in lista:
     print("-", (produto), "R$",(valor))
 
 #remover item cadastrado
-deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ")
+deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
 if deleta in lista:
     lista.pop(deleta)
     print ("\nVocê apagou o item: \n-", (deleta), "\n")
