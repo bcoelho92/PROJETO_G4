@@ -11,69 +11,65 @@ def clear_console():
         os.system('cls')
     else:
         os.system('clear')
-
+        
 clear_console() 
 
-print (''' 
+menu=0
+while menu !=4:
 
-Bem vindo(a) ao Menu de Estoque! Digite a opção que você deseja:
+    print (''' 
 
-1 - Cadastrar um novo produto
-2 - Listar todos os Produtos Cadastrados 
-3 - Apagar um Produto do Cadastro
-4 - Sair
-''')
-print('')
+    Bem vindo(a) ao Menu de Estoque! Digite a opção que você deseja:
 
-# variaveis 
-
-menu = int(input('Digite a opção desejada: '))
-
-while menu >=5 or menu <=0:
-    menu = int(input('Digite a opção válida: '))
-
-if menu == 1:
-    clear_console()
-    print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
-
-elif menu == 2:
-    clear_console()
-    print("Esses são os produtos cadastrados no estoque:")
-
-elif menu == 3:
-    clear_console()
-    print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
-
-elif menu == 4:
-    clear_console()
-    print("Saindo do Menu de Cadastro\n")
+    1 - Cadastrar um novo produto
+    2 - Listar todos os Produtos Cadastrados 
+    3 - Apagar um Produto do Cadastro
+    4 - Sair
+    ''')
+    print('')
 
 
-lista = {} #criando lista vazia 
-qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
+    menu = int(input('Digite a opção desejada: '))
 
-for i in range(qtd):
-    produto = input("Digite o nome do produto: ")
-    valor = input("Digite o valor do produto: ")
-    lista[produto] = valor
+    while menu >=5 or menu <=0:
+        menu = int(input('Digite uma opção válida: '))
 
-clear_console()    
-print("Produtos cadastrados:")
-for produto in lista:
-    print("-", (produto), "R$",(valor))
+    if menu == 1:
+        clear_console()
+        print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
+        lista = {} #criando lista vazia 
+        qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
 
-#remover item cadastrado
-deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ")
-if deleta in lista:
-    lista.pop(deleta)
-    print ("\nVocê apagou o item: \n-", (deleta), "\n")
-    print("\nLista Atualizada:")
-    print(lista)
+        for i in range(qtd):
+            produto = input("Digite o nome do produto: ").title()
+            valor = input("Digite o valor do produto: ")
+            lista[produto] = valor
+            
 
-elif deleta == "":
-    print(lista)
+    elif menu == 2:
+        clear_console()
+        print("Esses são os produtos cadastrados no estoque:") 
+        print("Produtos cadastrados:")
+        for produto in lista:
+            print("-", (produto), "R$",(valor))
 
-else: print("\nProduto nao cadastrado!")
+    elif menu == 3:
+        clear_console()
+        print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
+        #remover item cadastrado
+        deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
+        if deleta in lista:
+            lista.pop(deleta)
+            print ("\nVocê apagou o item: \n-", (deleta), "\n")
+            print("\nLista Atualizada:")
+            print(lista)
+        elif deleta == "":
+            print(lista)
+        else: print("\nProduto nao cadastrado!")
+    elif menu == 4:
+        clear_console()
+        print("Saindo do Menu de Cadastro\n")
+        
 
 
-
+    
