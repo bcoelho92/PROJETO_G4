@@ -5,15 +5,15 @@
     #Deleção de produtos 
     
 import os
-#os.system('cls')
 
 def clear_console():
     if os.name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
-
+        
 clear_console() 
+
 menu=0
 while menu !=4:
 
