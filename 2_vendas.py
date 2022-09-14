@@ -11,10 +11,10 @@ carrinho = {} #Definir essa variável no começo do programa
 produtos = {"arroz": 6, "feijão": 8, "macarrão": 12, "sal": 2, "açúcar": 3} #Dicionário com todos os produtos
 qtdProdutos = len(produtos)
 
-total_local = 0
-menuGeral = 2 #Variável de exemplo para começar meu código
+totalCarrinho = 0
+menuFernando = 2 #Variável de exemplo para começar meu código
 menuVendas = 0
-while menuGeral == 2:
+while menuFernando == 2:
 
     if int(menuVendas) == 0: #Menu de Vendas
         clear()
@@ -45,10 +45,10 @@ while menuGeral == 2:
             qtdProdutos = qtdProdutos -1
 
         escolha = input("Informe o produto que deseja adicionar ao carrinho: ")
-        while str(escolha).lower() not in produtos: #check LOWER!
+        while str(escolha).title() not in produtos: #check LOWER!
             print("\nProduto inválido.")
             escolha = input("Informe um nome válido: ")  
-        escolha = escolha.lower() #Produto escolhido definido.
+        escolha = escolha.title() #Produto escolhido definido.
 
         qtdEscolha = (input("Informe a quantidade desejada: "))
         while str(qtdEscolha).isnumeric() is not True or int(qtdEscolha) < 1:#check
@@ -72,43 +72,43 @@ while menuGeral == 2:
             clear()
 
 
-    if int(menuVendas) == 2 and total_local == 0:#Remover produtos com carrinho vazio
+    if int(menuVendas) == 2 and totalCarrinho == 0:#Remover produtos com carrinho vazio
         clear()
         print("Seu carrinho está vazio.")
         enter = input("\nAperte Enter para retornar ao menu ")
         menuVendas = 0
 
-    if int(menuVendas) == 5 and total_local == 0:#Finalizar compra com carrinho vazio
+    if int(menuVendas) == 5 and totalCarrinho == 0:#Finalizar compra com carrinho vazio
         clear()
         print("Seu carrinho está vazio.")
         enter = input("\nAperte Enter para retornar ao menu ")
         menuVendas = 0
 
     
-    if int(menuVendas) == 2 and total_local > 0:#Remover produtos do carrinho
+    if int(menuVendas) == 2 and totalCarrinho > 0:#Remover produtos do carrinho
         clear()
         print("CARRINHO") #Print carrinho
         countCarrinho = len(carrinho)
         index = 0
-        total_local = 0
+        totalCarrinho = 0
         while countCarrinho > 0:
             print("\n")
             print((list(carrinho)[index]).title())
             print("Quantidade:", list(carrinho.values())[index])
             print("Preço: R$", float(produtos[list(carrinho)[index]]))
             countCarrinho = countCarrinho -1
-            total_local = total_local + produtos[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
             index = index +1
-        print("\n Total a pagar: R$", float(total_local))#>
+        print("\n Total a pagar: R$", float(totalCarrinho))#>
 
         prodRemovido = input("\nInforme o nome do produto que deseja remover: ")
-        while str(prodRemovido).lower() not in carrinho: #check LOWER?
+        while str(prodRemovido).title() not in carrinho: #check LOWER?
                 print("\nProduto inválido.")
                 prodRemovido = input("Informe um nome válido: ")
 
         carrinho.pop(f'{prodRemovido}')
-        prodRemovido = prodRemovido.lower()#check LOWER?
-        total_local = total_local - float(produtos[f'{prodRemovido}'])
+        prodRemovido = prodRemovido.title()#check LOWER?
+        totalCarrinho = totalCarrinho - float(produtos[f'{prodRemovido}'])
         clear()
         print(prodRemovido.title(), "removido com sucesso!") #Removido
             
@@ -120,7 +120,7 @@ while menuGeral == 2:
         if questaoRemover.lower() == "sim":
             menuVendas = 2
 
-            if total_local == 0:
+            if totalCarrinho == 0:
                 print("\nSeu carrinho está vazio.")
                 enter = input("\n Aperte Enter para voltar ao início.")
                 menuVendas = 0
@@ -134,16 +134,16 @@ while menuGeral == 2:
         print("CARRINHO") #Print carrinho
         countCarrinho = len(carrinho)
         index = 0
-        total_local = 0
+        totalCarrinho = 0
         while countCarrinho > 0:
             print("\n")
             print((list(carrinho)[index]).title())
             print("Quantidade:", list(carrinho.values())[index])
             print("Preço: R$", float(produtos[list(carrinho)[index]]))
             countCarrinho = countCarrinho -1
-            total_local = total_local + produtos[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
             index = index +1
-        print("\n Total a pagar: R$", float(total_local))#>
+        print("\n Total a pagar: R$", float(totalCarrinho))#>
 
         print('''\n
         1 - Adicionar produtos ao carrinho
@@ -157,21 +157,21 @@ while menuGeral == 2:
             print("Opção inválida!")
             menuVendas = input("Digite novamente: ")
 
-        if int(menuVendas) == 5 and total_local != 0: #Finalizar compra
+        if int(menuVendas) == 5 and totalCarrinho != 0: #Finalizar compra
             clear()
             print("CARRINHO") #Print carrinho
             countCarrinho = len(carrinho)
             index = 0
-            total_local = 0
+            totalCarrinho = 0
             while countCarrinho > 0:
                 print("\n")
                 print((list(carrinho)[index]).title())
                 print("Quantidade:", list(carrinho.values())[index])
                 print("Preço: R$", float(produtos[list(carrinho)[index]]))
                 countCarrinho = countCarrinho -1
-                total_local = total_local + produtos[list(carrinho)[index]]
+                totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
                 index = index +1
-            print("\n Total a pagar: R$", float(total_local))#>
+            print("\n Total a pagar: R$", float(totalCarrinho))#>
 
             enter = input("\nAperte Enter para confirmar a compra")
             clear()
@@ -182,5 +182,5 @@ while menuGeral == 2:
             menuVendas = 0
 
 
-if menuVendas == 4:
-    menuGeral = 0
+    if int(menuVendas) == 4:
+        menuFernando = 0
