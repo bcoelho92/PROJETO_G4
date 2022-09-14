@@ -25,8 +25,14 @@ menuCad = 0
 menuVendas = 0
 menuRelat = 0
 
-descm0 ='''
-******************************************
+print()
+print('******************************************************************************')
+nomeCliente = str(input('Digite sue nome: '))
+
+descm0 = '''
+******************************************************************************
+            Bem vindo(a) {} ao sistema de vendas da Organico’s!
+******************************************************************************
 MENU PRINCIPAL
 
 Essas são as opções do programa:           
@@ -36,22 +42,22 @@ Essas são as opções do programa:
 [3] - Relatório                                
 [4] - Sair                                     
                                                      
-****************************************** '''
-descm1 =''' 
-******************************************
+*******************************************************************************'''
+descm1 ='''
+******************************************************************************
 MENU CADASTRO 
 
 Essas são as opções do programa:  
 
 [1] - Cadastramento de produtos
 [2] - Listar produtos cadastrados
-[3] - Deleção de produtos
+[3] - Apagar um Produto do Cadastro
 [4] - Voltar ao menu anterior
 [5] - Sair    
 
-******************************************'''
+******************************************************************************'''
 descm2 =''' 
-******************************************
+******************************************************************************
 MENU VENDAS 
 
 Essas são as opções do programa:  
@@ -62,9 +68,9 @@ Essas são as opções do programa:
 [4] - Voltar ao menu anterior
 [4] - Sair    
 
-******************************************'''
+******************************************************************************'''
 descm3 =''' 
-******************************************
+******************************************************************************
 MENU RELATÓRIO
 
 Essas são as opções do programa:  
@@ -73,7 +79,7 @@ Essas são as opções do programa:
 [2] - Voltar ao menu anterior
 [3] - Sair    
 
-******************************************'''
+******************************************************************************'''
 
 #vendas 
 
@@ -86,34 +92,70 @@ print()
 
 # LÓGICA
 
-nomeCliente = str(input('Digite sue nome: '))
-print()
-print ('Bem vindo(a) {} ao sistema de vendas da Organico’s!'.format(nomeCliente))
-
 def main():
     while True:
         print(descm0.format(nomeCliente))
         menuGeral = int(input('{}, digite a opção: '.format(nomeCliente)))
         print()
+# Cadastro
         if menuGeral == 1:
-            print (descm1)
-            print()
-            menuCad = int(input('{}, digite a opção [Menu cadastro]: '.format(nomeCliente)))
-            print()
+#            def vend ():
             while True:
+                print (descm1)
+                print()
+                menuCad = int(input('{}, digite a opção [Menu cadastro]: '.format(nomeCliente)))
+                print()       
+                
                 if menuCad == 1:
-                    print ('funcao 1')
+                    clear()
+                    print('*******************************************************************************')
+                    print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
+                    lista = {} #criando lista vazia 
+                    qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
+
+                    for i in range(qtd):
+                        produto = input("Digite o nome do produto: ").title()
+                        valor = input("Digite o valor do produto: ")
+                        print('*******************************************************************************')
+                        lista[produto] = valor
+
                 elif menuCad == 2:
-                    print('funcao 2')
+                            clear()
+                            print("Esses são os produtos cadastrados no estoque:") 
+                            print()
+                            print("Produtos cadastrados:")
+                            for produto in lista:
+                                print()
+                                print("-", (produto), "R$",(valor))
+                                print('*******************************************************************************')
+                        #    break  
+                        # Ajustar back do menu  
                 elif menuCad == 3:
-                    print('funcao 3')
+                    clear()
+                    print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
+                    #remover item cadastrado
+                    deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
+
+                    if deleta in lista:
+                        lista.pop(deleta)
+                        print ("\nVocê apagou o item: \n-", (deleta), "\n")
+                        print("\nLista Atualizada:")
+                        print(lista)
+                        print('*******************************************************************************')
+                    elif deleta == "":
+                        print(lista)
+
+                    else:print("\nProduto nao cadastrado!")
+                    break
                 elif menuCad == 4:
                     break
                 elif menuCad == 5:
-                    print ('Fim do programa')
-                    sys.exit() 
+                    print('Fim do programa, {} obrigado e Até a proxima!'.format(nomeCliente))
+                    print()
+                    sys.exit(2)
                 else: 
                     print('Opção invalida, digite uma opção valida: ')
+# Vendas
         elif menuGeral == 2:
             print (descm2)
             print()
@@ -139,7 +181,8 @@ def main():
                     print ('Fim do programa')
                     sys.exit() 
                 else: 
-                    print('Opção invalida, digite uma opção valida: ')                  
+                    print('Opção invalida, digite uma opção valida: ')   
+# Relatorio               
         elif menuGeral == 3:
             print (descm3)
             print()
@@ -154,11 +197,13 @@ def main():
                     print ('Fim do programa')
                     sys.exit()
                 else: 
-                    print('Opção invalida, digite uma opção valida: ')          
+                    print('Opção invalida, digite uma opção valida: ')  
+# Sair        
         elif menuGeral == 4:
-            print('fim do programa')
+            print('Fim do programa, {} obrigado e Até a proxima!'.format(nomeCliente))
             print()
-            sys.exit
+            break
+            
         else: 
             print('Opção invalida, digite uma opção valida: ')
             main()
