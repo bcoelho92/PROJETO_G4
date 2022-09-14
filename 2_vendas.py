@@ -1,5 +1,7 @@
 # 1 - Vendas - responsável Fernando
 
+carrinho = {} #DEFINIR NO COMEÇO DO PROGRAMA
+
 import os
 def clear():
     if os.name == 'nt':
@@ -7,25 +9,28 @@ def clear():
     else:
         os.system('clear')
 
-carrinho = {} #Definir essa variável no começo do programa
-produtos = {"arroz": 6, "feijão": 8, "macarrão": 12, "sal": 2, "açúcar": 3} #Dicionário com todos os produtos
-qtdProdutos = len(produtos)
+
+qtdlista = len(lista)
 
 totalCarrinho = 0
-menuFernando = 2 #Variável de exemplo para começar meu código
+menuFernando = 2 #ISSO COMEÇA A RODAR MEU CÓDIGO
 menuVendas = 0
 while menuFernando == 2:
 
     if int(menuVendas) == 0: #Menu de Vendas
         clear()
-        print('''\n
-    MENU DE VENDAS
+        print(''' 
+******************************************
+MENU VENDAS 
 
-    1 - Adicionar produtos ao carrinho
-    2 - Remover produtos do carrinho
-    3 - Carrinho
-    4 - Voltar ao início
-    ''')
+Essas são as opções do programa:  
+
+[1] - Adicionar produtos ao carrinho
+[2] - Remover produtos do carrinho
+[3] - Carrinho
+[4] - Voltar ao menu anterior
+
+******************************************''')
         menuVendas = input("Digite a opção desejada: ")
         while str(menuVendas).isnumeric() != True or str(menuVendas) not in "1234":#check
             print("\nResposta inválida.")
@@ -36,16 +41,16 @@ while menuFernando == 2:
         clear()
         print("Veja a seguir nosso catálogo de produtos: \n")
         index = 0 #Referência para posição
-        qtdProdutos = len(produtos)
+        qtdProdutos = len(lista)
         while qtdProdutos > 0: #Print: lista de produtos
-            print(list(produtos)[index].title())
-            print("Preço: R$",float(list(produtos.values())[index]))
-            print("\n")
+            print(list(lista)[index].title())
+            print("Preço: R$",float(list(lista.values())[index]))
+            print("____________________________________\n")
             index = index +1
             qtdProdutos = qtdProdutos -1
 
         escolha = input("Informe o produto que deseja adicionar ao carrinho: ")
-        while str(escolha).title() not in produtos: #check LOWER!
+        while str(escolha).title() not in lista: #check LOWER!
             print("\nProduto inválido.")
             escolha = input("Informe um nome válido: ")  
         escolha = escolha.title() #Produto escolhido definido.
@@ -92,12 +97,12 @@ while menuFernando == 2:
         index = 0
         totalCarrinho = 0
         while countCarrinho > 0:
-            print("\n")
             print((list(carrinho)[index]).title())
             print("Quantidade:", list(carrinho.values())[index])
-            print("Preço: R$", float(produtos[list(carrinho)[index]]))
+            print("Preço: R$", float(lista[list(carrinho)[index]]))
+            print("____________________________________\n")
             countCarrinho = countCarrinho -1
-            totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
             index = index +1
         print("\n Total a pagar: R$", float(totalCarrinho))#>
 
@@ -108,7 +113,7 @@ while menuFernando == 2:
 
         carrinho.pop(f'{prodRemovido}')
         prodRemovido = prodRemovido.title()#check LOWER?
-        totalCarrinho = totalCarrinho - float(produtos[f'{prodRemovido}'])
+        totalCarrinho = totalCarrinho - float(lista[f'{prodRemovido}'])
         clear()
         print(prodRemovido.title(), "removido com sucesso!") #Removido
             
@@ -131,27 +136,31 @@ while menuFernando == 2:
     if int(menuVendas) == 3: #Carrinho
         clear()
 
-        print("CARRINHO") #Print carrinho
+        print("CARRINHO:\n") #Print carrinho
         countCarrinho = len(carrinho)
         index = 0
         totalCarrinho = 0
         while countCarrinho > 0:
-            print("\n")
             print((list(carrinho)[index]).title())
             print("Quantidade:", list(carrinho.values())[index])
-            print("Preço: R$", float(produtos[list(carrinho)[index]]))
+            print("Preço: R$", float(lista[list(carrinho)[index]]))
+            print("____________________________________\n")
             countCarrinho = countCarrinho -1
-            totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
             index = index +1
         print("\n Total a pagar: R$", float(totalCarrinho))#>
 
-        print('''\n
-        1 - Adicionar produtos ao carrinho
-        2 - Remover produtos do carrinho
-        5 - Finalizar a compra
+        print(''' 
+******************************************
+MENU
 
-        0 - Voltar ao menu
-        ''')
+[1] - Adicionar produtos ao carrinho
+[2] - Remover produtos do carrinho
+[5] - Finalizar compra
+
+[0] - Voltar ao menu anterior
+
+******************************************''')
         menuVendas = input("\nDigite a opção desejada: ")
         while str(menuVendas).isnumeric() != True or str(menuVendas) not in "1250":#check
             print("Opção inválida!")
@@ -159,17 +168,17 @@ while menuFernando == 2:
 
         if int(menuVendas) == 5 and totalCarrinho != 0: #Finalizar compra
             clear()
-            print("CARRINHO") #Print carrinho
+            print("CARRINHO:\n") #Print carrinho
             countCarrinho = len(carrinho)
             index = 0
             totalCarrinho = 0
             while countCarrinho > 0:
-                print("\n")
                 print((list(carrinho)[index]).title())
                 print("Quantidade:", list(carrinho.values())[index])
-                print("Preço: R$", float(produtos[list(carrinho)[index]]))
+                print("Preço: R$", float(lista[list(carrinho)[index]]))
+                print("____________________________________\n")
                 countCarrinho = countCarrinho -1
-                totalCarrinho = totalCarrinho + produtos[list(carrinho)[index]]
+                totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
                 index = index +1
             print("\n Total a pagar: R$", float(totalCarrinho))#>
 
@@ -178,9 +187,11 @@ while menuFernando == 2:
             print("Compra efetuada com sucesso!")
             vendasQtd = carrinho
             enter = input("\nAperte Enter para voltar ao menu inicial")
+            carrinhoRef = carrinho #Referência ao menu de Relatório
             carrinho = {}
             menuVendas = 0
 
 
     if int(menuVendas) == 4:
         menuFernando = 0
+        menuGeral = ?? #SAIR DO MEU PROGRAMA

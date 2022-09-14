@@ -7,20 +7,17 @@ def clear():
         os.system('clear')
 
 
-menuFernando = 3
+menuFernando = 3 #ISSO COMEÇA A RODAR MEU CÓDIGO
 menuRelatorio = 0
-carrinho = {"arroz": 2, "feijão": 3} #EXEMPLO
-produtos = {"arroz": 5.0,"feijão": 7.0} #EXEMPLO
 
-vendasValor = produtos #lista com o produto e seu preço (na lista de produtos)
+vendasValor = lista #lista com o produto e seu preço (na lista de produtos)
 
 #Adicionando todos os produtos da lista à lista quantidade vendidas:
-#COLOCAR NO MENU DE CADASTRAMENTO
 indexVendas = 0
-countProdutos = len(produtos)
+countProdutos = len(lista)
 vendasQuant = {}
 while countProdutos > 0:
-    nomeProd = list(produtos)[indexVendas]
+    nomeProd = list(lista)[indexVendas]
     vendasQuant[nomeProd] = 0
     indexVendas = indexVendas +1
     countProdutos = countProdutos -1#>
@@ -29,26 +26,26 @@ while countProdutos > 0:
 while menuFernando == 3:
 
     #CHECK - OPÇÃO 1 - Somando itens do carrinho ao relatório de vendas (sem prints)
-    count = len(carrinho)
+    count = len(carrinhoRef)
     indexSoma = 0
     while count > 0:
-        nomeProd = list(carrinho)[indexSoma]
-        quantProduto1 = carrinho[nomeProd]
+        nomeProd = list(carrinhoRef)[indexSoma]
+        quantProduto1 = carrinhoRef[nomeProd]
         quantProduto2 = vendasQuant[nomeProd]
         novaQuant = quantProduto1 + quantProduto2
         vendasQuant[nomeProd] = novaQuant
         indexSoma = indexSoma+1
         count = count-1
-        carrinho[nomeProd] = 0
+        carrinhoRef[nomeProd] = 0
 
-    #CHECK - OPÇÃO 2 - Referenciar o dicionário de produtos.
+    #CHECK - OPÇÃO 2 - Referenciar o dicionário de lista.
     index = 0
-    countVendasValor = len(produtos)
+    countVendasValor = len(lista)
     totalTotal = 0
     while countVendasValor > 0:
-        nomeProdutoVendido = (list(produtos)[index])
+        nomeProdutoVendido = (list(lista)[index])
         quantProdutoVendido = vendasQuant[nomeProdutoVendido]
-        precoProdutoVendido = produtos[nomeProdutoVendido]
+        precoProdutoVendido = lista[nomeProdutoVendido]
         totalProdutoVendido = (int(quantProdutoVendido)*float(precoProdutoVendido))
         totalTotal = totalTotal +totalProdutoVendido
         index = index +1
@@ -60,31 +57,32 @@ while menuFernando == 3:
 
     if int(menuRelatorio) == 0:
         clear()
-        print('''\n
-    MENU DO RELATÓRIO
+        print(''' \n
+******************************************
+MENU VENDAS 
 
-    1 - Quantidade vendida por produto
-    2 - Total vendido por produto (em reais)
-    3 - Total vendido (em reais)
-    4 - Voltar ao início
-    ''')
+Essas são as opções do programa:  
+
+[1] - Quantidade vendida por produto
+[2] - Total vendido por produto (em reais)
+[3] - Total vendido (em reais)
+[4] - Voltar ao menu anterior
+
+******************************************''')
 
         menuRelatorio = input("Digite a opção desejada: ")
         while str(menuRelatorio) not in "1234" or str(menuRelatorio).isnumeric() != True:#check
             print("\nOpção inválida")
             menuRelatorio = input("Digite uma opção válida: ")
 
-    if int(menuRelatorio) == 4:
-        menuFernando = 0
-
 
     if int(menuRelatorio) == 1: #Quantidade vendida de cada produto.
         clear()
-        count = len(carrinho)
+        count = len(carrinhoRef)
         indexSoma = 0
         while count > 0: #Somando itens do carrinho ao relatório de vendas
-            nomeProd = list(carrinho)[indexSoma]
-            quantProduto1 = carrinho[nomeProd] #Quantidade no carrinho
+            nomeProd = list(carrinhoRef)[indexSoma]
+            quantProduto1 = carrinhoRef[nomeProd] #Quantidade no carrinho
             quantProduto2 = vendasQuant[nomeProd] #Quantidade na lista de vendas
             novaQuant = quantProduto1 + quantProduto2
             vendasQuant[nomeProd] = novaQuant
@@ -94,9 +92,9 @@ while menuFernando == 3:
 
             print(nomeProd.title())
             print("Quantidade vendida: ",novaQuant)
-            print("\n")
+            print("____________________________________\n")
 
-            carrinho[nomeProd] = 0
+            carrinhoRef[nomeProd] = 0
 
         enter = input("Aperte Enter para voltar")
         menuRelatorio = 0
@@ -106,18 +104,18 @@ while menuFernando == 3:
     if int(menuRelatorio) == 2: #Valor vendido de cada produto.
         clear()
         index = 0
-        countVendasValor = len(produtos) #Referenciar o dicionário de produtos.
+        countVendasValor = len(lista) #Referenciar o dicionário de produtos.
         totalTotal = 0
         while countVendasValor > 0:
-            print((list(produtos)[index]).title())
-            print("Preço por unidade: R$",list(produtos.values())[index])
-            nomeProdutoVendido = (list(produtos)[index])
+            print((list(lista)[index]).title())
+            print("Preço por unidade: R$",list(lista.values())[index])
+            nomeProdutoVendido = (list(lista)[index])
             quantProdutoVendido = vendasQuant[nomeProdutoVendido]
-            precoProdutoVendido = produtos[nomeProdutoVendido]
+            precoProdutoVendido = lista[nomeProdutoVendido]
             totalProdutoVendido = (int(quantProdutoVendido)*float(precoProdutoVendido))
             totalTotal = totalTotal +totalProdutoVendido
             print("Total vendido: R$",totalProdutoVendido)
-            print("\n")
+            print("____________________________________\n")
             index = index +1
             countVendasValor = countVendasValor = countVendasValor -1
         
@@ -130,3 +128,7 @@ while menuFernando == 3:
         print("O total vendido em reais equivale a: R$",totalTotal)
         enter = input("\nAperte Enter para voltar")
         menuRelatorio = 0
+
+    if int(menuRelatorio) == 4:
+        menuFernando = 0
+        menuGeral = ?? #SAIR DO MEU PROGRAMA
