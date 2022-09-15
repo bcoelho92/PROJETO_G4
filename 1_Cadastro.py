@@ -43,6 +43,7 @@ while menu !=6:
         clear_console()
 
         # lista = {} #criando lista vazia 
+        # listaadd = {}
         
         # produto = input("Digite o nome do produto: \n").title()
         # valor = float(input('Insira o preço do produto a ser cadastrado\n'))
@@ -55,7 +56,7 @@ while menu !=6:
         # clear_console()
         # print("\n Você adicionou ao estoque:\n", lista, "\n")
 
-        lista = {} #criando lista vazia 
+        lista = {}
         listaadd = {}
 
         qtd = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
@@ -89,7 +90,6 @@ while menu !=6:
             submenu = int(input('Digite uma opção válida: Digite 1 p/ cadastrar produto ou 2 para voltar: '))
         #else:
              #print('\nVoltando ao menu de cadastro:\n')
-
 
     elif menu == 2:
         clear_console()
