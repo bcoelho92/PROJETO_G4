@@ -41,8 +41,23 @@ while menu !=6:
 
     if menu == 1:
         clear_console()
+
+        # lista = {} #criando lista vazia 
+        
+        # produto = input("Digite o nome do produto: \n").title()
+        # valor = float(input('Insira o preço do produto a ser cadastrado\n'))
+
+        # if produto in lista:
+        #     lista[produto] = lista[produto] + valor
+        # else:
+        #     lista[produto] = valor
+
+        # clear_console()
+        # print("\n Você adicionou ao estoque:\n", lista, "\n")
+
         lista = {} #criando lista vazia 
         listaadd = {}
+
         qtd = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
 
         for i in range(qtd):
@@ -51,24 +66,22 @@ while menu !=6:
             lista[produto] = valor
         
         print("\nVocê cadastrou esses itens:\n")
-        for produto in lista:
-            print("-", (produto), "R$",(valor))
-            #print('')
-        #print('\nVoltando ao menu de cadastro:\n')
+        print(lista)
+
         submenu = int(input("\nGostaria de acrescentar mais produtos? Digite 1 p/ sim ou 2 para voltar:\n"))
         if submenu == 1:
-           num = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
-           for e in range(num):
-            produtoadd = input("Digite o nome do produto: ").title()
-            valoradd = float(input("Digite o preço do produto: "))
+            clear_console()
+            num = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
+            for e in range(num):
+                produtoadd = input("Digite o nome do produto: ").title()
+                valoradd = float(input("Digite o preço do produto: "))
 
             listaadd[produtoadd] = valoradd
             lista.update(listaadd)
             print("\nLista Atualizada:\n ")
-            for produto in lista:
-                    print("-", (produto), "R$",(valor))
-                #print(lista)
+            print(lista)
             print('')
+
         if submenu == 2:
             clear_console()
             print('\nVoltando ao menu de cadastro:\n')
