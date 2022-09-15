@@ -68,7 +68,6 @@ Bem vindo(a) ao Menu de Carrinho!
 [0] - Voltar ao menu anterior
 
 '''
-
 descm2 =''' 
 ******************************************
 Bem vindo(a) ao Menu de Vendas! 
@@ -112,7 +111,7 @@ while True:
     menuGeral = int(input('{}, digite a opção: '.format(nomeCliente)))
     print()
 
-    if menuGeral == 1: # ok
+    if menuGeral == 1:
         while True:
             print (descm1.format(nomeCliente))
             print('')
