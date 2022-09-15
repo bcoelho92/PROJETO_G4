@@ -47,7 +47,7 @@ descm1 ='''
 ******************************************
 Bem vindo(a) ao Menu de Estoque! 
 
-{}, ssas são as opções:  
+{}, essas são as opções:  
 
 [1] - Cadastramento de produtos
 [2] - Listar produtos cadastrados
@@ -113,6 +113,7 @@ while True:
 
     if menuGeral == 1:
         while True:
+            
             print (descm1.format(nomeCliente))
             print('')
 
@@ -123,13 +124,12 @@ while True:
 
             if menuCad == 1:
                 clear()
-                print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
                 lista = {} #criando lista vazia 
                 qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
 
                 for i in range(qtd):
                     produto = input("Digite o nome do produto: ").title()
-                    valor = input("Digite o valor do produto: ")
+                    valor = float(input("Digite o valor do produto: "))
                     lista[produto] = valor
             
             elif menuCad == 2:
@@ -141,7 +141,6 @@ while True:
 
             elif menuCad == 3:
                 clear()
-                print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
                 #remover item cadastrado
                 deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
                 if deleta in lista:
