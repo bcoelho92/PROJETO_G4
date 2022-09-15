@@ -49,32 +49,36 @@ Essas são as opções do programa:
             index = index +1
             qtdProdutos = qtdProdutos -1
 
-        escolha = input("Informe o produto que deseja adicionar ao carrinho: ")
-        while str(escolha).title() not in lista: #check LOWER!
-            print("\nProduto inválido.")
-            escolha = input("Informe um nome válido: ")  
-        escolha = escolha.title() #Produto escolhido definido.
-
-        qtdEscolha = (input("Informe a quantidade desejada: "))
-        while str(qtdEscolha).isnumeric() is not True or int(qtdEscolha) < 1:#check
-            print("\nQuantidade inválida.")
-            qtdEscolha = (input("Informe uma quantidade válida: "))
-        qtdEscolha = int(qtdEscolha) #Quantidade escolhida definida.
+        if str(escolha) in "0":
+            menuVendas = 0
+        else:
+            escolha = input("Informe o produto que deseja adicionar ao carrinho ou aperte 0 para voltar ao menu: ")
+            while str(escolha).title() not in lista or str(escolha) not in "0":
+                print("\nProduto inválido.")
+                escolha = input("Informe um nome válido: ")  
+            escolha = escolha.title() #Produto escolhido definido.
 
 
-        carrinho[escolha] = qtdEscolha #Adiciona ao carrinho
-        carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite SIM ou NÃO: ")
-        while carrinhoAdicionar.lower() != "sim" and carrinhoAdicionar.lower() != "não": #check
-            print("\nResposta inválida.")
-            carrinhoAdicionar = input("Digite SIM ou NÃO: ")
-        print("")
+            qtdEscolha = (input("Informe a quantidade desejada: "))
+            while str(qtdEscolha).isnumeric() is not True or int(qtdEscolha) < 1:#check
+                print("\nQuantidade inválida.")
+                qtdEscolha = (input("Informe uma quantidade válida: "))
+            qtdEscolha = int(qtdEscolha) #Quantidade escolhida definida.
 
-        if carrinhoAdicionar.lower() == "sim":
-            menuVendas = 1
-            clear()
-        elif carrinhoAdicionar.lower() == "não":
-            menuVendas = 3
-            clear()
+
+            carrinho[escolha] = qtdEscolha #Adiciona ao carrinho
+            carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite SIM ou NÃO: ")
+            while carrinhoAdicionar.lower() != "sim" and carrinhoAdicionar.lower() != "não": #check
+                print("\nResposta inválida.")
+                carrinhoAdicionar = input("Digite SIM ou NÃO: ")
+            print("")
+
+            if carrinhoAdicionar.lower() == "sim":
+                menuVendas = 1
+                clear()
+            elif carrinhoAdicionar.lower() == "não":
+                menuVendas = 3
+                clear()
 
 
     if int(menuVendas) == 2 and totalCarrinho == 0:#Remover produtos com carrinho vazio
@@ -102,7 +106,8 @@ Essas são as opções do programa:
             print("Preço: R$", float(lista[list(carrinho)[index]]))
             print("____________________________________\n")
             countCarrinho = countCarrinho -1
-            totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
+            somacar = lista[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
             index = index +1
         print("\n Total a pagar: R$", float(totalCarrinho))#>
 
@@ -111,7 +116,7 @@ Essas são as opções do programa:
                 print("\nProduto inválido.")
                 prodRemovido = input("Informe um nome válido: ")
 
-        carrinho.pop(f'{prodRemovido}')
+        carrinho.pop(f'{prodRemovido.title()}')
         prodRemovido = prodRemovido.title()#check LOWER?
         totalCarrinho = totalCarrinho - float(lista[f'{prodRemovido}'])
         clear()
@@ -146,7 +151,8 @@ Essas são as opções do programa:
             print("Preço: R$", float(lista[list(carrinho)[index]]))
             print("____________________________________\n")
             countCarrinho = countCarrinho -1
-            totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
+            somacar = lista[list(carrinho)[index]]
+            totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
             index = index +1
         print("\n Total a pagar: R$", float(totalCarrinho))#>
 
@@ -178,7 +184,8 @@ MENU
                 print("Preço: R$", float(lista[list(carrinho)[index]]))
                 print("____________________________________\n")
                 countCarrinho = countCarrinho -1
-                totalCarrinho = totalCarrinho + lista[list(carrinho)[index]]
+                somacar = lista[list(carrinho)[index]]
+                totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
                 index = index +1
             print("\n Total a pagar: R$", float(totalCarrinho))#>
 
