@@ -47,7 +47,7 @@ while menu !=6:
 
         for i in range(qtd):
             produto = input("Digite o nome do produto: ").title()
-            valor = input("Digite o preço do produto: ")
+            valor = float(input("Digite o preço do produto: "))
             lista[produto] = valor
         
         print("\nVocê cadastrou esses itens:\n")
@@ -60,7 +60,7 @@ while menu !=6:
            num = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
            for e in range(num):
             produtoadd = input("Digite o nome do produto: ").title()
-            valoradd = input("Digite o preço do produto: ")
+            valoradd = float(input("Digite o preço do produto: "))
 
             listaadd[produtoadd] = valoradd
             lista.update(listaadd)
