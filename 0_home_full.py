@@ -151,7 +151,6 @@ while True:
 
             elif menuCad == 3:
                 clear()
-                print("Você deseja apagar um produto do estoque?\n")
                 #remover item cadastrado
                 deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
                 if deleta in lista:
@@ -449,7 +448,7 @@ while True:
                 break
 
     elif menuGeral == 4:
-        print('fim do programa')
+        print('Fim do programa')
         break
     
     else: 
