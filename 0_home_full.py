@@ -205,13 +205,13 @@ while True:
                     carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite SIM ou NÃO: ")
                     while carrinhoAdicionar.lower() != "sim" and carrinhoAdicionar.lower() != "não": #check
                         print("\nResposta inválida.")
-                        carrinhoAdicionar = input("Digite SIM ou NÃO: ")
+                        carrinhoAdicionar.title = input("Digite S para Sim ou N para NÃO: ")
                     print("")
 
-                    if carrinhoAdicionar.lower() == "sim":
+                    if carrinhoAdicionar.lower() == "S":
                         menuVendas = 1
                         clear()
-                    elif carrinhoAdicionar.lower() == "não":
+                    elif carrinhoAdicionar.lower() == "N":
                         menuVendas = 3
                         clear()
 
@@ -260,16 +260,16 @@ while True:
                 questaoRemover = input("\nDeseja remover outro produto? Digite SIM ou NÃO: ") #Repete?
                 while questaoRemover.lower() != "sim" and questaoRemover.lower() != "não":#check
                         print("\nResposta inválida.")
-                        questaoRemover = input("Digite SIM ou NÃO: ")
+                        questaoRemover.title = input("Digite S para SIM ou N para NÃO: ")
 
-                if questaoRemover.lower() == "sim":
+                if questaoRemover.lower() == "N":
                     menuVendas = 2
 
                     if totalCarrinho == 0:
                         print("\nSeu carrinho está vazio.")
                         enter = input("\n Aperte Enter para voltar ao início.")
                         menuVendas = 0
-                elif questaoRemover.lower() == "não":
+                elif questaoRemover.lower() == "N":
                     menuVendas = 3
 
 
