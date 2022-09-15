@@ -8,8 +8,8 @@ def clear():
 
 
 menuFernando = 3 #ISSO COMEÇA A RODAR MEU CÓDIGO
-menuRelatorio = 0
 
+menuRelatorio = 0
 vendasValor = lista #lista com o produto e seu preço (na lista de produtos)
 
 #Adicionando todos os produtos da lista à lista quantidade vendidas:
