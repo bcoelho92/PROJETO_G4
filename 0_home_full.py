@@ -291,7 +291,7 @@ while True:
                     index = index +1
                 print("\n Total a pagar: R$", float(totalCarrinho))#>
 
-                print(descm2b)
+                print(descm2b.format(nomeCliente))
                 menuVendas = input("\nDigite a opção desejada: ")
                 while str(menuVendas).isnumeric() != True or str(menuVendas) not in "1250":#check
                     print("Opção inválida!")
