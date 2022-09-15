@@ -14,6 +14,10 @@ def clear_console():
         
 clear_console() 
 
+lista = {}
+
+listaadd = {}
+
 menu=0
 while menu !=6:
 
@@ -56,8 +60,7 @@ while menu !=6:
         # clear_console()
         # print("\n Você adicionou ao estoque:\n", lista, "\n")
 
-        lista = {}
-        listaadd = {}
+       
 
         qtd = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
 
