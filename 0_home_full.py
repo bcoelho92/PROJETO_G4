@@ -25,11 +25,15 @@ menuRelat = 0
 print()
 nomeCliente = str(input('''
 ******************************************
-bem vindo(a) ao sistema de cadastro e vendas da Organico’s!
+Bem vindo(a) ao sistema de cadastro e vendas da Organico’s!
 
-Por favor digite sue nome: '''))
+Por favor digite seu nome: '''))
 nomeCliente = nomeCliente.title()
-print()
+if os.name == 'nt':
+    os.system('cls')
+else:
+    os.system('clear')
+print("\n")
 
 descm0 ='''
 ******************************************
@@ -47,7 +51,7 @@ descm1 ='''
 ******************************************
 Bem vindo(a) ao Menu de Estoque! 
 
-{}, ssas são as opções:  
+{}, essas são as opções:  
 
 [1] - Cadastramento de produtos
 [2] - Listar produtos cadastrados
@@ -59,7 +63,7 @@ Bem vindo(a) ao Menu de Estoque!
 descm2b = '''
 Bem vindo(a) ao Menu de Carrinho! 
 
-{}, ssas são as opções: 
+{}, essas são as opções: 
 
 [1] - Adicionar produtos ao carrinho
 [2] - Remover produtos do carrinho
@@ -105,6 +109,8 @@ def clear():
     else:
         os.system('clear')
 
+
+
 # def main():
 while True:
     print(descm0.format(nomeCliente))
@@ -112,10 +118,10 @@ while True:
     print()
 
     if menuGeral == 1:
+        clear()
         while True:
             print (descm1.format(nomeCliente))
             print('')
-
             menuCad = int(input('Digite a opção desejada: '))
 
             while menuCad >=5 or menuCad <=0:
@@ -123,25 +129,29 @@ while True:
 
             if menuCad == 1:
                 clear()
-                print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
-                lista = {} #criando lista vazia 
-                qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
+                qtd = input("\nQuantos produtos você gostaria de adicionar? ")
+                while str(qtd).isnumeric() != True:
+                    print("\nQuantidade inválida!")
+                    qtd = input("Quantos produtos você gostaria de adicionar?\n")
+                qtd = int(qtd)
 
                 for i in range(qtd):
                     produto = input("Digite o nome do produto: ").title()
                     valor = input("Digite o valor do produto: ")
+                    print("\n")
                     lista[produto] = valor
+                clear()
             
             elif menuCad == 2:
                 clear()
-                print("Esses são os produtos cadastrados no estoque:") 
+                print("Esses são os produtos cadastrados no estoque:\n") 
                 print("Produtos cadastrados:")
                 for produto in lista:
                     print("-", (produto), "R$",(valor))
 
             elif menuCad == 3:
                 clear()
-                print("Você deseja apagar um produto do estoque? Para retroceder, digite Q \n")
+                print("Você deseja apagar um produto do estoque?\n")
                 #remover item cadastrado
                 deleta = input("Qual produto você gostaria de deletar? Digite ENTER para reexibir a lista: ").title()
                 if deleta in lista:
@@ -202,16 +212,16 @@ while True:
 
 
                     carrinho[escolha] = qtdEscolha #Adiciona ao carrinho
-                    carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite SIM ou NÃO: ")
-                    while carrinhoAdicionar.lower() != "sim" and carrinhoAdicionar.lower() != "não": #check
+                    carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite S ou N: ")
+                    while carrinhoAdicionar.lower() != "s" and carrinhoAdicionar.lower() != "n": #check
                         print("\nResposta inválida.")
-                        carrinhoAdicionar = input("Digite SIM ou NÃO: ")
+                        carrinhoAdicionar = input("Digite S ou N: ")
                     print("")
 
-                    if carrinhoAdicionar.lower() == "sim":
+                    if carrinhoAdicionar.lower() == "s":
                         menuVendas = 1
                         clear()
-                    elif carrinhoAdicionar.lower() == "não":
+                    elif carrinhoAdicionar.lower() == "n":
                         menuVendas = 3
                         clear()
 
@@ -257,19 +267,19 @@ while True:
                 
                 print(prodRemovido.title(), "removido com sucesso!") #Removido
                     
-                questaoRemover = input("\nDeseja remover outro produto? Digite SIM ou NÃO: ") #Repete?
-                while questaoRemover.lower() != "sim" and questaoRemover.lower() != "não":#check
+                questaoRemover = input("\nDeseja remover outro produto? Digite S ou N: ") #Repete?
+                while questaoRemover.lower() != "s" and questaoRemover.lower() != "n":#check
                         print("\nResposta inválida.")
-                        questaoRemover = input("Digite SIM ou NÃO: ")
+                        questaoRemover = input("Digite S ou N: ")
 
-                if questaoRemover.lower() == "sim":
+                if questaoRemover.lower() == "s":
                     menuVendas = 2
 
                     if totalCarrinho == 0:
                         print("\nSeu carrinho está vazio.")
                         enter = input("\n Aperte Enter para voltar ao início.")
                         menuVendas = 0
-                elif questaoRemover.lower() == "não":
+                elif questaoRemover.lower() == "n":
                     menuVendas = 3
 
 
@@ -290,6 +300,7 @@ while True:
                     totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
                     index = index +1
                 print("\n Total a pagar: R$", float(totalCarrinho))#>
+                print("____________________________________\n")
 
                 print(descm2b.format(nomeCliente))
                 menuVendas = input("\nDigite a opção desejada: ")
@@ -325,7 +336,7 @@ while True:
 
 
             if int(menuVendas) == 4:
-                print('fim do programa')
+                clear()
                 break
 
     elif menuGeral == 3:
@@ -435,7 +446,6 @@ while True:
                 menuRelatorio = 0
 
             if int(menuRelatorio) == 4:
-                print('fim do programa')
                 break
 
     elif menuGeral == 4:
