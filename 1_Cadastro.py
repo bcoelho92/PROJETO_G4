@@ -15,41 +15,72 @@ def clear_console():
 clear_console() 
 
 menu=0
-while menu !=4:
+while menu !=6:
 
     print (''' 
+    ******************************************
+    MENU CADASTRO 
 
-    Bem vindo(a) ao Menu de Estoque! Digite a opção que você deseja:
+    Essas são as opções do programa:  
 
-    1 - Cadastrar um novo produto
-    2 - Listar todos os Produtos Cadastrados 
-    3 - Apagar um Produto do Cadastro
-    4 - Sair
+    [1] - Cadastramento de produtos
+    [2] - Listar produtos cadastrados
+    [3] - Deleção de produtos
+    [4] - Voltar ao menu anterior
+    [5] - Sair    
+
+    ******************************************
     ''')
     print('')
 
 
     menu = int(input('Digite a opção desejada: '))
 
-    while menu >=5 or menu <=0:
+    while menu >=6 or menu <=0:
         menu = int(input('Digite uma opção válida: '))
 
     if menu == 1:
         clear_console()
-        print("Você deseja cadastrar um produto no estoque? Para retroceder, digite Q \n")
         lista = {} #criando lista vazia 
-        qtd = int(input("\nQuantos produtos você gostaria de adicionar? ")) 
+        listaadd = {}
+        qtd = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
 
         for i in range(qtd):
             produto = input("Digite o nome do produto: ").title()
-            valor = input("Digite o valor do produto: ")
+            valor = input("Digite o preço do produto: ")
             lista[produto] = valor
-            
+        
+        print("\nVocê cadastrou esses itens:\n")
+        for produto in lista:
+            print("-", (produto), "R$",(valor))
+            #print('')
+        #print('\nVoltando ao menu de cadastro:\n')
+        submenu = int(input("\nGostaria de acrescentar mais produtos? Digite 1 p/ sim ou 2 para voltar:\n"))
+        if submenu == 1:
+           num = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
+           for e in range(num):
+            produtoadd = input("Digite o nome do produto: ").title()
+            valoradd = input("Digite o preço do produto: ")
+
+            listaadd[produtoadd] = valoradd
+            lista.update(listaadd)
+            print("\nLista Atualizada:\n ")
+            for produto in lista:
+                    print("-", (produto), "R$",(valor))
+                #print(lista)
+            print('')
+        if submenu == 2:
+            clear_console()
+            print('\nVoltando ao menu de cadastro:\n')
+        while submenu >=3 or menu <=0:
+            submenu = int(input('Digite uma opção válida: Digite 1 p/ cadastrar produto ou 2 para voltar: '))
+        #else:
+             #print('\nVoltando ao menu de cadastro:\n')
+
 
     elif menu == 2:
         clear_console()
-        print("Esses são os produtos cadastrados no estoque:") 
-        print("Produtos cadastrados:")
+        print("\nProdutos cadastrados no estoque:\n")
         for produto in lista:
             print("-", (produto), "R$",(valor))
 
@@ -66,9 +97,14 @@ while menu !=4:
         elif deleta == "":
             print(lista)
         else: print("\nProduto nao cadastrado!")
+
     elif menu == 4:
         clear_console()
         print("Saindo do Menu de Cadastro\n")
+
+    elif menu == 5:
+        clear_console()
+        print("Fechando o Sistema\n")
         
 
 
