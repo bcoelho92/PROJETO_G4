@@ -46,22 +46,6 @@ while menu !=6:
     if menu == 1:
         clear_console()
 
-        # lista = {} #criando lista vazia 
-        # listaadd = {}
-        
-        # produto = input("Digite o nome do produto: \n").title()
-        # valor = float(input('Insira o preço do produto a ser cadastrado\n'))
-
-        # if produto in lista:
-        #     lista[produto] = lista[produto] + valor
-        # else:
-        #     lista[produto] = valor
-
-        # clear_console()
-        # print("\n Você adicionou ao estoque:\n", lista, "\n")
-
-       
-
         qtd = int(input("\nQuantos produtos você gostaria de cadastrar? ")) 
 
         for i in range(qtd):
