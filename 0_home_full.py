@@ -101,6 +101,7 @@ Bem vindo(a) ao Menu de Relatório!
 
 lista = {} #lista vazia
 carrinho = {} #Definir essa variável no começo do programa
+carrinhoRef = {}
 # qtdlista = 0
 
 def clear():
@@ -445,6 +446,7 @@ while True:
                 menuRelatorio = 0
 
             if int(menuRelatorio) == 4:
+                clear()
                 break
 
     elif menuGeral == 4:
