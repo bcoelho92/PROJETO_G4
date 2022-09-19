@@ -110,6 +110,34 @@ def clear():
     else:
         os.system('clear')
 
+def check_quantidade(num): #Checa se a qtd. é um número maior que 0
+    while str(num).isnumeric() is not True or int(num) < 1:
+        print("\nQuantidade inválida.")
+        num = (input("Informe uma quantidade válida: "))
+    return int(num)
+
+def check_SouN(x):
+    while x.lower() != "s" and x.lower() != "n":
+        print("\nResposta inválida.")
+        x = input("Digite S (sim) ou N (não): ")
+    return str(x)
+
+def print_carrinho():
+    print("CARRINHO\n")
+    countCarrinho = len(carrinho)
+    index = 0
+    totalCarrinho = 0
+    while countCarrinho > 0:
+        print((list(carrinho)[index]).title())
+        print("Quantidade:", list(carrinho.values())[index])
+        print("Preço: R$", float(lista[list(carrinho)[index]]))
+        print("____________________________________\n")
+        countCarrinho = countCarrinho -1
+        somacar = lista[list(carrinho)[index]] 
+        totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
+        index = index +1
+    print("\n   Total a pagar: R$", float(totalCarrinho))#>
+    print("____________________________________\n")
 
 
 # def main():
@@ -205,17 +233,12 @@ while True:
                     escolha = escolha.title() #Produto escolhido definido.
                 
                     qtdEscolha = (input("Informe a quantidade desejada: "))
-                    while str(qtdEscolha).isnumeric() is not True or int(qtdEscolha) < 1:#check
-                        print("\nQuantidade inválida.")
-                        qtdEscolha = (input("Informe uma quantidade válida: "))
-                    qtdEscolha = int(qtdEscolha) #Quantidade escolhida definida.
+                    qtdEscolha = check_quantidade(qtdEscolha)
 
 
                     carrinho[escolha] = qtdEscolha #Adiciona ao carrinho
-                    carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite S ou N: ")
-                    while carrinhoAdicionar.lower() != "s" and carrinhoAdicionar.lower() != "n": #check
-                        print("\nResposta inválida.")
-                        carrinhoAdicionar = input("Digite S ou N: ")
+                    carrinhoAdicionar = input("\nDeseja adicionar mais produtos ao carrinho? Digite S (sim) ou N (não): ")
+                    carrinhoAdicionar = check_SouN(carrinhoAdicionar)
                     print("")
 
                     if carrinhoAdicionar.lower() == "s":
@@ -241,36 +264,21 @@ while True:
             
             if int(menuVendas) == 2 and totalCarrinho > 0:#Remover produtos do carrinho
                 clear()
-                print("CARRINHO \n") #Print carrinho
-                countCarrinho = len(carrinho)
-                index = 0
-                totalCarrinho = 0
-                while countCarrinho > 0:
-                    print((list(carrinho)[index]).title())
-                    print("Quantidade:", list(carrinho.values())[index])
-                    print("Preço: R$", float(lista[list(carrinho)[index]]))
-                    print("____________________________________\n")
-                    countCarrinho = countCarrinho -1
-                    somacar = lista[list(carrinho)[index]] 
-                    totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
-                    index = index +1
-                print("\n Total a pagar: R$", float(totalCarrinho))#>
+                print_carrinho()
 
                 prodRemovido = input("\nInforme o nome do produto que deseja remover: ")
-                while str(prodRemovido).title() not in carrinho: #check LOWER?
+                while str(prodRemovido).title() not in carrinho:
                         print("\nProduto inválido.")
                         prodRemovido = input("Informe um nome válido: ")
                 clear()     
                 carrinho.pop(f'{prodRemovido.title()}')
-                prodRemovido = prodRemovido.title()#check LOWER?
+                prodRemovido = prodRemovido.title()
                 totalCarrinho = totalCarrinho - float(lista[f'{prodRemovido}'])
                 
                 print(prodRemovido.title(), "removido com sucesso!") #Removido
                     
                 questaoRemover = input("\nDeseja remover outro produto? Digite S ou N: ") #Repete?
-                while questaoRemover.lower() != "s" and questaoRemover.lower() != "n":#check
-                        print("\nResposta inválida.")
-                        questaoRemover = input("Digite S ou N: ")
+                questaoRemover = check_SouN(questaoRemover)
 
                 if questaoRemover.lower() == "s":
                     menuVendas = 2
@@ -285,22 +293,7 @@ while True:
 
             if int(menuVendas) == 3: #Carrinho
                 clear()
-
-                print("CARRINHO:\n") #Print carrinho
-                countCarrinho = len(carrinho)
-                index = 0
-                totalCarrinho = 0
-                while countCarrinho > 0:
-                    print((list(carrinho)[index]).title())
-                    print("Quantidade:", list(carrinho.values())[index])
-                    print("Preço: R$", float(lista[list(carrinho)[index]]))
-                    print("____________________________________\n")
-                    countCarrinho = countCarrinho -1
-                    somacar = lista[list(carrinho)[index]] 
-                    totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
-                    index = index +1
-                print("\n Total a pagar: R$", float(totalCarrinho))#>
-                print("____________________________________\n")
+                print_carrinho()
 
                 print(descm2b.format(nomeCliente))
                 menuVendas = input("\nDigite a opção desejada: ")
@@ -310,20 +303,7 @@ while True:
 
                 if int(menuVendas) == 5 and totalCarrinho != 0: #Finalizar compra
                     clear()
-                    print("CARRINHO:\n") #Print carrinho
-                    countCarrinho = len(carrinho)
-                    index = 0
-                    totalCarrinho = 0
-                    while countCarrinho > 0:
-                        print((list(carrinho)[index]).title())
-                        print("Quantidade:", list(carrinho.values())[index])
-                        print("Preço: R$", float(lista[list(carrinho)[index]]))
-                        print("____________________________________\n")
-                        countCarrinho = countCarrinho -1
-                        somacar = lista[list(carrinho)[index]] 
-                        totalCarrinho = totalCarrinho + (float(somacar)*list(carrinho.values())[index])
-                        index = index +1
-                    print("\n Total a pagar: R$", float(totalCarrinho))#>
+                    print_carrinho
 
                     enter = input("\nAperte Enter para confirmar a compra")
                     clear()
@@ -389,7 +369,7 @@ while True:
                 print(descm3.format(nomeCliente))
 
                 menuRelatorio = input("Digite a opção desejada: ")
-                while str(menuRelatorio) not in "1234" or str(menuRelatorio).isnumeric() != True:#check
+                while str(menuRelatorio) not in "1234" or str(menuRelatorio).isnumeric() != True:
                     print("\nOpção inválida")
                     menuRelatorio = input("Digite uma opção válida: ")
 
@@ -455,4 +435,3 @@ while True:
     
     else: 
         menuGeral = int(input('{}, digite a opção Valida: '.format(nomeCliente)))
-# main() 
