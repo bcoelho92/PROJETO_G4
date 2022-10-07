@@ -1,50 +1,51 @@
-# 1 - Cadastro - responsaveis Julia e Bruno (2)
-    #Sub-menu de Cadastro:
-    #Cadastramento de produtos
-    #Listar produtos cadastrados
-    #Deleção de produtos 
-
-from fileinput import filename
-from flask import Flask 
-from flask import render_template
-from flask import url_for, redirect
-from flask import request  
-import numpy as np
+from flask import Flask
+from flask import request
 import pandas as pd
-import os
 
-def clear_console():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
+produtos=[]
+valores=[]
+quantidades=[]
 
-menu=0
-produto=[]
-valor=[]
-op="s"
+app = Flask(__name__)
+
 # logica 
 
-clear_console()
-while op == "s":
-    print("Vamos cadastra !\n")
-    produto.append(input("\nDigite o nome do produto: "))
-    valor.append(input("\nDigite o valor do produto: R$ "))
-    op = str(input("Deseja continudar: s/n "))
-    clear_console() 
+@app.route('/')
+def index():
+    return "Hello!"
 
-produto = pd.Series(produto,name='Produto')
-valor = pd.Series(valor,name='Valor R$')
+@app.route('/cadastrar')
+def cadastro():
+    argumentos = request.args.to_dict()
+    '''
+    {
+        'produto': val_produto,
+        'valor': val_preco,
+        'quantidade': val_quantidade,
+    }
+    '''
+    produto1 = argumentos['produto']
+    preco1 = argumentos['valor']
+    quantidade1 = argumentos['quantidade']
+    
+    produtos.append(produto1)
+    valores.append(preco1)
+    quantidades.append(quantidade1)
 
-estoque = pd.DataFrame({
-    'Produto':produto,
-    'Valor':valor,
-})
+estoque = pd.DataFrame(data={
+    'Produtos':produtos,
+    'Valores R$':valores,
+    'Quantidade':quantidades
+}).set_index('Produtos')
 
-print(f'''Estoque final: 
-{estoque}''')
+estoque.to_csv('past_cadastro/estoque.csv', index=False) #Salva dataframe
 
-estoque.to_csv('test dev/estoque.csv', index=False) #Salva dataframe
+@app.route('/dataframe')
 
+def dataframe():
+    print(estoque)
+    estoque.to_html('past_cadastro/estoque.html')
+    return 'verifique no terminal'
 
-
+if __name__ == "__main__":
+    app.run(debug=True)
