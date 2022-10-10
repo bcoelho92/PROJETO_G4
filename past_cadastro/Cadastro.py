@@ -17,13 +17,6 @@ def index():
 @app.route('/cadastrar')
 def cadastro():
     argumentos = request.args.to_dict()
-    '''
-    {
-        'produto': val_produto,
-        'valor': val_preco,
-        'quantidade': val_quantidade,
-    }
-    '''
     produto1 = argumentos['produto']
     preco1 = argumentos['valor']
     quantidade1 = argumentos['quantidade']
