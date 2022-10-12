@@ -7,7 +7,7 @@ valores=[]
 quantidades=[]
 
 app = Flask(__name__)
-
+ 
 # logica 
 
 @app.route('/')
