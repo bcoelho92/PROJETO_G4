@@ -26,12 +26,13 @@ precos = []
 quantidades = []
 produtos = {}
 
+'''
 df = pd.DataFrame(data={
         'Produto': [],
         'Preco': [],
         'Quantidade': []
     }).set_index('Produto')
-
+'''
 df = pd.read_csv('cadastro/estoque.csv',index_col='Produto') # ok
 
 # df = pd.read_csv('cadastro/estoque.csv',index_col='produtos') # TESTANDO 
