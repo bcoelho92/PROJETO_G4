@@ -26,20 +26,25 @@ precos = []
 quantidades = []
 produtos = {}
 
-df = pd.DataFrame(data={
+'''df = pd.DataFrame(data={
         'produto': [],
         'preco': [],
         'quantidade': []
     }).set_index('produto')
+'''
+df = pd.read_csv('cadastro/estoque.csv',index_col='produto') # ok
 
-df = pd.read_csv('cadastro/estoque.csv')
+# df = pd.read_csv('cadastro/estoque.csv',index_col='produtos') # TESTANDO 
+# df = pd.read_csv('cadastro/estoque.csv',header='None',names=['Produtos','Preço','Quantidade'],index_col='Produtos') # TESTANDO 
+# df = pd.read_csv('cadastro/estoque.csv',header='None',index_col='Produtos') # TESTANDO 
 
 print(df)
-@app.route('/')
+
+@app.route('/') # ok
 def index():
     return redirect('http://127.0.0.1:5000/static/index.html')
 
-@app.route('/cadastro')
+@app.route('/cadastro') # ok 
 def cadastro():
     argumentos = request.args.to_dict()
     produto = argumentos['produto']
@@ -57,47 +62,36 @@ def cadastro():
     df.to_csv('cadastro/estoque.csv')
     return 'Produtos foram cadastrados'
 
-@app.route("/adicionar")
+@app.route("/adicionar") # ok
 def adicionar():
-    
     argumentos = request.args.to_dict()
     # Argumentos em listas  
     produto = argumentos['produto']
     preco = argumentos['preco']
     quantidade = argumentos['quantidade']
 
-    produtos_lista.append(produto)
-    precos.append(preco)
-    quantidades.append(quantidade)
-
-    produtos[produto] = [preco, quantidade]
-    #dataframe
     df.loc[produto] = [preco, quantidade]
-    # mnstra o df-adicionar
-    print (df)
-    # adiciona mais uma linha no dataframe com base no df-adicionar
-    # df.loc[len(df)] = df
-    # Salva dataframe em CSV
-    # df.to_csv('cadastro/estoque.csv', index=False) 
+    
+    df.to_csv('cadastro/estoque.csv', header=False) 
     return 'Prodtuto adicionado'
 
-@app.route("/deletar")
+@app.route("/deletar") # validar drop com mateus 
 def remover():
-
     argumentos = request.args.to_dict()
     # coletar argumento INDEX   
-    deleta = argumentos['produto']
+    deleta = str(argumentos['produto'])
     # apaga o item do dataframe com base no digito do produto.
-    df.drop(deleta,axis=0, implace=True)
+    df.drop(deleta, axis=0)
     # Salva dataframe em CSV
-    df.to_csv('cadastro/estoque.csv', index=False) 
+    # df.to_csv('cadastro/estoque.csv', index=False) 
     print(df)
     return 'Produto deletado'
     
-@app.route("/estoque")
+    
+@app.route("/estoque") # pendnete 
 def estoque():
     df = pd.read_csv('cadastro/estoque.csv')
-    print(df)
+    # print(df)
     return 'Vide console por enquanto'
 
 if __name__ == "__main__":
