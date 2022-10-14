@@ -25,7 +25,6 @@ produtos_lista = []
 precos = []
 quantidades = []
 produtos = {}
-
 '''
 df = pd.DataFrame(data={
         'Produto': [],
