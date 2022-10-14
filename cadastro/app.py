@@ -14,7 +14,7 @@
 
 from email import header
 from fileinput import filename
-from flask import render_template, url_for , redirect# Ler aruivos HTML
+from flask import render_template, url_for , redirect # Ler aruivos HTML
 from flask import request
 import pandas as pd
 from flask import Flask
@@ -26,19 +26,19 @@ precos = []
 quantidades = []
 produtos = {}
 
-'''df = pd.DataFrame(data={
-        'produto': [],
-        'preco': [],
-        'quantidade': []
-    }).set_index('produto')
-'''
-df = pd.read_csv('cadastro/estoque.csv',index_col='produto') # ok
+df = pd.DataFrame(data={
+        'Produto': [],
+        'Preco': [],
+        'Quantidade': []
+    }).set_index('Produto')
+
+df = pd.read_csv('cadastro/estoque.csv',index_col='Produto') # ok
 
 # df = pd.read_csv('cadastro/estoque.csv',index_col='produtos') # TESTANDO 
 # df = pd.read_csv('cadastro/estoque.csv',header='None',names=['Produtos','Preço','Quantidade'],index_col='Produtos') # TESTANDO 
 # df = pd.read_csv('cadastro/estoque.csv',header='None',index_col='Produtos') # TESTANDO 
 
-print(df)
+# print(df)
 
 @app.route('/') # ok
 def index():
@@ -72,21 +72,21 @@ def adicionar():
 
     df.loc[produto] = [preco, quantidade]
     
-    df.to_csv('cadastro/estoque.csv', header=False) 
+    df.to_csv('cadastro/estoque.csv') 
     return 'Prodtuto adicionado'
 
 @app.route("/deletar") # validar drop com mateus 
 def remover():
     argumentos = request.args.to_dict()
     # coletar argumento INDEX   
-    deleta = str(argumentos['produto'])
+    deleta = argumentos['produto']
+    deleta = str(deleta)
     # apaga o item do dataframe com base no digito do produto.
-    df.drop(deleta, axis=0)
+    df.drop(deleta)
     # Salva dataframe em CSV
-    # df.to_csv('cadastro/estoque.csv', index=False) 
+    # df.to_csv('cadastro/estoque.csv') 
     print(df)
     return 'Produto deletado'
-    
     
 @app.route("/estoque") # pendnete 
 def estoque():
