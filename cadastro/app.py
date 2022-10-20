@@ -34,12 +34,6 @@ df = pd.DataFrame(data={
 '''
 df = pd.read_csv('cadastro/estoque.csv',index_col='Produto') # ok
 
-# df = pd.read_csv('cadastro/estoque.csv',index_col='produtos') # TESTANDO 
-# df = pd.read_csv('cadastro/estoque.csv',header='None',names=['Produtos','Preço','Quantidade'],index_col='Produtos') # TESTANDO 
-# df = pd.read_csv('cadastro/estoque.csv',header='None',index_col='Produtos') # TESTANDO 
-
-# print(df)
-
 @app.route('/') # ok
 def index():
     return redirect('http://127.0.0.1:5000/static/index.html')
@@ -60,7 +54,8 @@ def cadastro():
     df.loc[produto] = [preco, quantidade]
 
     df.to_csv('cadastro/estoque.csv')
-    return 'Produtos foram cadastrados'
+    return redirect('http://127.0.0.1:5000/static/back_home.html')
+
 '''
 @app.route("/adicionar") # ok
 def adicionar():
@@ -87,12 +82,12 @@ def remover():
     # Salva dataframe em CSV
     df.to_csv('cadastro/estoque.csv') 
     print(df)
-    return 'Produto deletado'
+    return redirect('http://127.0.0.1:5000/static/back_del.html')
     
 @app.route("/estoque") # pendnete 
 def estoque():
-    df = pd.read_csv('cadastro/estoque.csv')
-    # print(df)
+    df = pd.read_csv('cadastro/estoque.csv',index_col='Produto')
+    print(df)
     return 'Vide console por enquanto'
 
 if __name__ == "__main__":
