@@ -8,6 +8,7 @@
 
 # ***** FORMULARIOS *****
 # http://127.0.0.1:5000/static/index.html
+
 # http://127.0.0.1:5000/static/cadastrar.html
 # http://127.0.0.1:5000/static/adicionar.html
 # http://127.0.0.1:5000/static/deletar.html
