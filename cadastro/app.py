@@ -61,7 +61,7 @@ def cadastro():
 
     df.to_csv('cadastro/estoque.csv')
     return 'Produtos foram cadastrados'
-
+'''
 @app.route("/adicionar") # ok
 def adicionar():
     argumentos = request.args.to_dict()
@@ -74,17 +74,18 @@ def adicionar():
     
     df.to_csv('cadastro/estoque.csv') 
     return 'Prodtuto adicionado'
-
-@app.route("/deletar") # validar drop com mateus 
+'''
+@app.route("/deletar") # OK
 def remover():
+    global df
     argumentos = request.args.to_dict()
     # coletar argumento INDEX   
     deleta = argumentos['produto']
     deleta = str(deleta)
     # apaga o item do dataframe com base no digito do produto.
-    df.drop(deleta)
+    df = df.drop(deleta, axis=0)
     # Salva dataframe em CSV
-    # df.to_csv('cadastro/estoque.csv') 
+    df.to_csv('cadastro/estoque.csv') 
     print(df)
     return 'Produto deletado'
     
