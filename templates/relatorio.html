@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+
+    <link rel="stylesheet" href="../static/style.css"/>
+
+</head>
+<body>
+    <header>
+        <h1>Organico's</h1>
+    </header>
+
+    <article>
+    <section class="flex-row">
+        <!--Menu lateral.-->
+        <div class="menuLateral">
+            <h4 class="menuLateral">Menu</h4>
+            <ul class="menuLateral">
+                <li><a class="menuLateral" href="/home.html">Início</a></li>
+                <li><a class="menuLateral" href="/cadastro.html">Cadastro</a></li>
+                <li><a class="menuLateral" href="/vendas.html">Vendas</a></li>
+                <li><a class="menuLateral" href="/relatorio.html">Relatório</a></li>
+            </ul>
+        </div>
+        <!--Fim do menu.-->
+
+        <div class="tabRelatorio">
+        <!--
+        <table class="tabRelatorio">
+            <tr>
+                <th>head1</th>
+                <th>head2</th>
+            </tr>
+            <tr>
+                <td>content1</td>
+                <td>content2</td>
+            </tr>
+        </table>
+        -->
+        
+        <table class="tabRelatorio">
+            <tr>
+                {% for titulo in li_cabecalho %}
+                <th>{{ titulo }}</th>
+                {% endfor %}
+            </tr>
+
+            {% for row in li_data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        </div>
+    </section>
+    <div class="total">
+        <h3> Total de vendas: {{ totalVendas }} R$</h3>
+    </div>
+</article>
+
+<footer></footer>
+
+    
+</body>
+</html>
