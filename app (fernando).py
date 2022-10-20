@@ -41,7 +41,7 @@ li_cabecalho = list(DF_relatorio.columns.values)
 #Transformando todos os dados em lista de tuplas.
 li_data = list(DF_relatorio.itertuples(index=False, name=None))
 
-@app.route("/")
+@app.route("/relatorio")
 def relatorio():
     return render_template("relatorio.html", li_cabecalho=li_cabecalho, li_data=li_data, totalVendas=totalVendas)
     #Nos parâmetros segundo e teceiro, estamos criando uma variável que será lida pelo Jinja no arquivo HTML.
