@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>  ADICIONAR - Organico’s </title>
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-static/">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Chamar estilo CSS -->
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"> Organico’s </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a href="http://127.0.0.1:5000" class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://127.0.0.1:5000/static/cad_cadastrar.html" class="nav-link" href="#">Cadastrar</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://127.0.0.1:5000/static/cad_adicionar.html" class="nav-link disabled">Adicionar</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://127.0.0.1:5000/static/cad_deletar.html" class="nav-link">Remover</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://127.0.0.1:5000/dataframe" class="nav-link disabled">Relatório Estoque </a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Pesquisa</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+<!--########################################################## -->
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <form action="/adicionar" method="get">
+        <fieldset>
+          <legend> Adicionar produto </legend>
+          <div>
+          <label for="campo1">Nome do produto: </label>
+          <input type="text"name="produto"id="campo1" placeholder="Nome do produto" required>
+          </div>
+          <div>
+          <label for="campo2">Preço R$: </label>
+          <input type="number" step="0.01" min="0" max="1000" name="preco"id="campo2" placeholder="Valor do produto" required>
+          </div>
+          <div>
+          <label for="campo3">Quantidade: </label>
+          <input type="number" step="1"min="1" max="1000" name="quantidade"id="campo3" placeholder="Quantidade de produtos" required>
+          </div>
+            
+          <input type="submit" value="Adicionar">
+        </fieldset>
+      </form>
+  </div>
+</main>
+<script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>
