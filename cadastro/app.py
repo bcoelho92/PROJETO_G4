@@ -90,9 +90,6 @@ def estoque():
     print(df)
     return 'Vide console por enquanto'
 
-
-# RELATÓRIO
-
 #<<Lógica:
 tabGeral = pd.read_csv("cadastro\estoque.csv") #Arquivo CSV com tudo.
 #1. Quantidade vendida por produto.
