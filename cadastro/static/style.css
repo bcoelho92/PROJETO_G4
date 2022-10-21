@@ -9,6 +9,9 @@ body{
     min-height: 75rem; /* Show it's not fixed to the top */
    /* background-image: linear-gradient(rgb(1, 7, 2),rgb(11, 11, 11)); */
 }
+button{
+  background-image: linear-gradient(rgb(1, 7, 2),rgb(235, 225, 225));
+}
 
 /* ###################################### */
 

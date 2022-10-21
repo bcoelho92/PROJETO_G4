@@ -54,7 +54,7 @@ def cadastro():
     df.loc[produto] = [preco, quantidade]
 
     df.to_csv('cadastro/estoque.csv')
-    return redirect('http://127.0.0.1:5000/static/back_home.html')
+    return redirect('http://127.0.0.1:5000/static/back_cad.html')
 
 '''
 @app.route("/adicionar") # ok
@@ -87,11 +87,8 @@ def remover():
 @app.route("/estoque") # pendnete 
 def estoque():
     df = pd.read_csv('cadastro/estoque.csv',index_col='Produto')
-    #print(df)
-    #return 'Vide console por enquanto'
-    df.to_html("cadastro/templates/Table.htm")
-    html_file = df.to_html()
-    return redirect('cadastro/templates/Table.htm')
+    print(df)
+    return 'Vide console por enquanto'
 
 ''' 
 VENDAS A IMPLANTAR 
