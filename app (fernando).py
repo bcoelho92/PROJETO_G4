@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 #<<Lógica:
-tabGeral = pd.read_csv("C:\\Users\\FE_GAVA\\Documents\\projetoMAGALU\\PROJETO_G4\\fe_csv_exemplo.csv") #Arquivo CSV com tudo.
+tabGeral = pd.read_csv("cadastro/estoque.csv") #Arquivo CSV com tudo.
 #1. Quantidade vendida por produto.
 produtosRel = tabGeral["Produto"]
 produtosRel = produtosRel.tolist() #Lista com nomes dos produtos.
@@ -33,7 +33,6 @@ DF_relatorio = pd.DataFrame ({
     "Valor vendido": SER_valor,
 })
 #>>
-
 #<<Pro HTML:
 #Transformando o cabeçalho do DataFrame em uma lista.
 li_cabecalho = list(DF_relatorio.columns.values)
@@ -43,7 +42,7 @@ li_data = list(DF_relatorio.itertuples(index=False, name=None))
 
 @app.route("/relatorio")
 def relatorio():
-    return render_template("relatorio.html", li_cabecalho=li_cabecalho, li_data=li_data, totalVendas=totalVendas)
+    return render_template("cadastro/templates/relatorio.html", li_cabecalho=li_cabecalho, li_data=li_data, totalVendas=totalVendas)
     #Nos parâmetros segundo e teceiro, estamos criando uma variável que será lida pelo Jinja no arquivo HTML.
     #Igualando o nome das variáveis de lá e daqui, respectivamente.
 #>>
