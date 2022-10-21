@@ -15,6 +15,7 @@
 
 from email import header
 from fileinput import filename
+from re import A
 from flask import render_template, url_for , redirect # Ler aruivos HTML
 from flask import request
 import pandas as pd
@@ -88,9 +89,13 @@ def remover():
 @app.route("/estoque") # pendnete 
 def estoque():
     df = pd.read_csv('cadastro/estoque.csv',index_col='Produto')
-    print(df)
-    return 'Vide console por enquanto'
+    #print(df)
+    #return 'Vide console por enquanto'
+    df.to_html("cadastro/templates/Table.htm")
+    html_file = df.to_html()
+    return redirect('cadastro/templates/Table.htm')
 
+''' 
 #<<Lógica:
 tabGeral = pd.read_csv("cadastro\estoque.csv") #Arquivo CSV com tudo.
 #1. Quantidade vendida por produto.
@@ -133,6 +138,6 @@ def relatorio():
     #Nos parâmetros segundo e teceiro, estamos criando uma variável que será lida pelo Jinja no arquivo HTML.
     #Igualando o nome das variáveis de lá e daqui, respectivamente.
 #>>
-
+'''
 if __name__ == "__main__":
     app.run(debug=True)
