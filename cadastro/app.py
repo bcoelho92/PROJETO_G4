@@ -1,4 +1,3 @@
-
 # ***** ROTAS *****
 # http://127.0.0.1:5000
 # http://127.0.0.1:5000/cadastro
@@ -8,7 +7,6 @@
 
 # ***** FORMULARIOS *****
 # http://127.0.0.1:5000/static/index.html
-
 # http://127.0.0.1:5000/static/cadastrar.html
 # http://127.0.0.1:5000/static/adicionar.html
 # http://127.0.0.1:5000/static/deletar.html
@@ -96,6 +94,11 @@ def estoque():
     return redirect('cadastro/templates/Table.htm')
 
 ''' 
+VENDAS A IMPLANTAR 
+
+
+RELATORIO A IMPLANTAR 
+
 #<<Lógica:
 tabGeral = pd.read_csv("cadastro\estoque.csv") #Arquivo CSV com tudo.
 #1. Quantidade vendida por produto.
