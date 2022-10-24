@@ -84,14 +84,17 @@ def remover():
     print(df)
     return redirect('http://127.0.0.1:5000/static/back_del.html')
     
-@app.route("/estoque") # pendnete 
+@app.route("/estoque") # Ok  
 def estoque():
     df = pd.read_csv('cadastro/estoque.csv',index_col='Produto')
     print(df)
-    return 'Vide console por enquanto'
+    df.to_html("cadastro/static/estoque.htm")
+    return redirect('http://127.0.0.1:5000/static/estoque.htm')
 
 ''' 
 VENDAS A IMPLANTAR 
+
+
 
 
 RELATORIO A IMPLANTAR 
